@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Temperature Checker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f0f0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Temperature Checker 🌡️</h2>
+  <input type="number" id="temperature" placeholder="Enter temperature in °C">
+  <br>
+  <button onclick="checkTemperature()">Check</button>
+  <div class="result" id="output"></div>
+</div>
+
+<script>
+  function checkTemperature() {
+    const temp = document.getElementById("temperature").value;
+    const output = document.getElementById("output");
+
+    if (temp === "") {
+      output.textContent = "Please enter a temperature.";
+      output.style.color = "black";
+      return;
+    }
+
+    const temperature = parseFloat(temp);
+
+    if (temperature > 30) {
+      output.textContent = "It's hot 🔥";
+      output.style.color = "red";
+    } else if (temperature < 15) {
+      output.textContent = "It's cold ❄️";
+      output.style.color = "skyblue";
+    } else {
+      output.textContent = "It's normal 🌤️";
+      output.style.color = "green";
+    }
+  }
+</script>
+
+</body>
+</html>
