@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Number Guessing Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    input {
+      padding: 10px;
+      width: 200px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Guess a number between 1 and 10</h2>
+  <input type="number" id="userGuess" placeholder="Enter your guess" min="1" max="10">
+  <br>
+  <button onclick="checkGuess()">Submit</button>
+  <div class="message" id="resultMessage"></div>
+</div>
+
+<script>
+  const secretNumber = 7;
+
+  function checkGuess() {
+    const userGuess = document.getElementById("userGuess").value;
+    const message = document.getElementById("resultMessage");
+
+    if (parseInt(userGuess) === secretNumber) {
+      message.textContent = "🎉 Correct!";
+      message.style.color = "green";
+    } else {
+      message.textContent = "❌ Wrong! Try again.";
+      message.style.color = "red";
+    }
+  }
+</script>
+
+</body>
+</html>
