@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Discount Calculator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 20px;
+    }
+
+    .discount-container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #ffe600;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .finalResult {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="discount-container">
+    <h2>Discount Calculator</h2>
+    
+    <label for="actualprice">Price:</label>
+    <input type="number" id="priceInput" min="0" placeholder="Enter the Price">
+    
+    <label for="discount">Discount (%):</label>
+    <input type="number" id="disInput" min="0" max="100" placeholder="Enter Discount %">
+
+    <button onclick="checkDiscount()">Calculate Final Price</button>
+
+    <div class="finalResult" id="finalResult"></div>
+  </div>
+
+  <script>
+    function checkDiscount() {
+      const price = parseFloat(document.getElementById("priceInput").value);
+      const discountPercent = parseFloat(document.getElementById("disInput").value);
+
+      if (isNaN(price) || isNaN(discountPercent)) {
+        document.getElementById("finalResult").textContent = "Please enter valid numbers.";
+        return;
+      }
+
+      if (price > 99) {
+        const discountAmount = (discountPercent / 100) * price;
+        const finalPrice = price - discountAmount;
+
+        document.getElementById("finalResult").textContent = `Final Price: ₹${finalPrice.toFixed(2)} (Discount: ₹${discountAmount.toFixed(2)})`;
+      } else {
+        document.getElementById("finalResult").textContent = "Price should be more than ₹99 to apply discount.";
+      }
+    }
+  </script>
+
+</body>
+</html>
