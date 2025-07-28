@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #ffecd2, #fcb69f);
+}
+
+.container {
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-blend-mode: darken;
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 2px solid darkgray;
+    font-size: 1rem;
+}
+
+button {
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border: none;
+    background: linear-gradient(45deg, #ff7e5f, #feb47b);
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.message {
+    font-size: 1.3rem;
+    color: #333;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
