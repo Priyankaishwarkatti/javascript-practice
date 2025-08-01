@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Palindrome Checker</title>
+<style>
+body{
+    background:linear-gradient(135deg,#6a11cb,#2575fc);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+    color:#fff;
+    font-family:sans-serif;
+}
+.box{
+    background:#ffffff33;
+    padding:20px;
+    border-radius:10px;
+    width:300px;
+    text-align:center;
+}
+input,button{
+    padding:8px;
+    margin:5px;
+    border:none;
+    border-radius:5px;
+}
+button{
+    background:#ff9800;
+    color:#fff;
+}
+</style>
+</head>
+<body>
+<div class="box">
+    <h3>Palindrome Checker</h3>
+    <input type="text" id="word" placeholder="Enter word">
+    <button onclick="checkPalindrome()">Check</button>
+    <p id="result"></p>
+</div>
+<script>
+function checkPalindrome(){
+    let txt=document.getElementById("word").value.toLowerCase();
+    let reversed=txt.split("").reverse().join("");
+    document.getElementById("result").innerText=
+        txt===reversed ? "✅ It's a palindrome!" : "❌ Not a palindrome.";
+}
+</script>
+</body>
+</html>
