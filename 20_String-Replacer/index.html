@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>String Replacer</title>
+<style>
+body{
+    background:linear-gradient(45deg,#00b4db,#0083b0);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    color:white;
+}
+.box{
+    background:#ffffff22;
+    padding:20px;
+    border-radius:8px;
+    width:320px;
+    text-align:center;
+}
+input{
+    width:90%;
+    padding:8px;
+    margin:5px 0;
+}
+button{
+    background:#ff5e62;
+    padding:8px 12px;
+    border:none;
+    color:white;
+}
+</style>
+</head>
+<body>
+<div class="box">
+    <h3>Word Replacer</h3>
+    <input type="text" id="sentence" placeholder="Enter sentence">
+    <input type="text" id="find" placeholder="Word to replace">
+    <input type="text" id="replace" placeholder="Replacement word">
+    <button onclick="replaceWord()">Replace</button>
+    <p id="output"></p>
+</div>
+<script>
+function replaceWord(){
+    let sentence=document.getElementById("sentence").value;
+    let word=document.getElementById("find").value;
+    let newWord=document.getElementById("replace").value;
+    let updated=sentence.replace(word,newWord);
+    document.getElementById("output").innerText=`Updated: ${updated}`;
+}
+</script>
+</body>
+</html>
