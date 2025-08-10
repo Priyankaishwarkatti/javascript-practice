@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Random Name Picker</title>
+<style>
+  body{font-family:Arial;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;
+    background:linear-gradient(90deg,#a8edea,#fed6e3);}
+  .box{background:#fff;padding:20px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);width:380px}
+  textarea{width:100%;height:120px;border-radius:8px;padding:10px;border:1px solid #ddd}
+  button{margin-top:8px;padding:10px 16px;border-radius:8px;border:none;background:#6c63ff;color:#fff;cursor:pointer}
+  p#res{font-weight:700;margin-top:12px;text-align:center}
+</style>
+</head>
+<body>
+  <div class="box">
+    <h3>Random Name Picker</h3>
+    <textarea id="list" placeholder="Paste names, one per line or comma separated"></textarea>
+    <br>
+    <button onclick="pick()">Pick One</button>
+    <p id="res"></p>
+  </div>
+
+<script>
+function pick(){
+  const raw = document.getElementById('list').value.trim();
+  if(!raw){document.getElementById('res').innerText='Enter some names.'; return;}
+  // split by newlines or commas
+  const items = raw.split(/\r?\n|,/).map(s=>s.trim()).filter(Boolean);
+  const choice = items[Math.floor(Math.random()*items.length)];
+  document.getElementById('res').innerText = `🎉 Selected: ${choice}`;
+}
+</script>
+</body>
+</html>
