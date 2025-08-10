@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Nickname Generator</title>
+<style>
+  body{font-family:Arial;margin:0;height:100vh;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#f6d365,#fda085);}
+  .card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);width:340px;text-align:center;}
+  input{width:100%;padding:10px;border-radius:8px;border:1px solid #ddd;margin:8px 0}
+  button{padding:10px 16px;border:none;border-radius:8px;background:#ff7e5f;color:#fff;cursor:pointer}
+  p.result{margin-top:14px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>Nickname Generator</h2>
+    <input id="name" placeholder="Enter full name"/>
+    <button onclick="makeNick()">Generate Nickname</button>
+    <p class="result" id="out"></p>
+  </div>
+
+<script>
+function makeNick(){
+  const raw = document.getElementById('name').value.trim();
+  if(!raw){ document.getElementById('out').innerText = 'Please enter a name.'; return; }
+  const parts = raw.split(/\s+/).map(s=>s.toLowerCase());
+  const first = parts[0] || '';
+  // simple rules: first3 + last2, or if short, repeat
+  let nick = '';
+  if(first.length <= 3) nick = first + (first.slice(0,1));
+  else nick = first.slice(0,3) + first.slice(-2);
+  // spicy suffix if multi-word
+  if(parts.length > 1) nick += parts[1].charAt(0).toUpperCase();
+  nick = nick.charAt(0).toUpperCase() + nick.slice(1);
+  document.getElementById('out').innerText = `Nickname: ${nick}`;
+}
+</script>
+</body>
+</html>
