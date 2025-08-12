@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Initials Avatar</title>
+<style>
+  body{font-family:Segoe UI,Arial;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;
+    background:linear-gradient(135deg,#ffd89b,#19547b);}
+  .card{background:#fff;padding:20px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);width:320px;text-align:center}
+  input{width:90%;padding:10px;border-radius:8px;border:1px solid #ddd;margin:10px 0}
+  button{padding:10px 16px;border-radius:8px;border:none;background:#1abc9c;color:#fff;cursor:pointer}
+  .avatar{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:12px auto;font-size:36px;color:#fff}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h3>Initials Avatar</h3>
+    <input id="nm" placeholder="Enter full name"/>
+    <br>
+    <button onclick="makeAvatar()">Create</button>
+    <div id="avatar" class="avatar" style="background:#333">A</div>
+  </div>
+
+<script>
+function makeAvatar(){
+  const raw = document.getElementById('nm').value.trim();
+  if(!raw){ document.getElementById('avatar').style.background='#888'; document.getElementById('avatar').innerText='?'; return; }
+  const parts = raw.split(/\s+/).filter(Boolean);
+  const initials = (parts[0].charAt(0) + (parts[1]?parts[1].charAt(0):'')).toUpperCase();
+  // pick color deterministically from name
+  let hash = 0; for(let i=0;i<raw.length;i++) hash = raw.charCodeAt(i) + ((hash<<5)-hash);
+  const color = `hsl(${hash%360} 60% 40%)`;
+  const el = document.getElementById('avatar');
+  el.style.background = color;
+  el.innerText = initials;
+}
+</script>
+</body>
+</html>
