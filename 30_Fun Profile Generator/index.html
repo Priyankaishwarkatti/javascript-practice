@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Profile Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            max-width: 350px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #ff6363;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background: #ff6363;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #e05252;
+        }
+        .result {
+            margin-top: 15px;
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Fun Profile Generator 🎉</h1>
+        <input type="text" id="fullName" placeholder="Enter your full name">
+        <input type="number" id="birthYear" placeholder="Enter your birth year">
+        <button onclick="generateProfile()">Generate Profile</button>
+        <div class="result" id="profileResult"></div>
+    </div>
+
+    <script>
+        function generateProfile() {
+            // Get input values
+            let fullName = document.getElementById("fullName").value.trim();
+            let birthYear = Number(document.getElementById("birthYear").value);
+
+            if (!fullName || !birthYear) {
+                alert("Please fill in all fields!");
+                return;
+            }
+
+            // String methods
+            let capitalizedName = fullName.charAt(0).toUpperCase() + fullName.slice(1).toLowerCase();
+            let nameLength = fullName.length;
+
+            // Math methods
+            let currentYear = new Date().getFullYear();
+            let age = currentYear - birthYear;
+            let luckyNumber = Math.floor(Math.random() * 100) + 1;
+
+            // Nickname
+            let nickname = capitalizedName.slice(0, 3) + luckyNumber;
+
+            // Template Literal for output
+            let profile = `
+                <strong>Name:</strong> ${capitalizedName} <br>
+                <strong>Nickname:</strong> ${nickname} <br>
+                <strong>Age:</strong> ${age} years <br>
+                <strong>Name Length:</strong> ${nameLength} characters <br>
+                <strong>Lucky Number:</strong> ${luckyNumber} <br>
+                <strong>Birth Year:</strong> ${birthYear}
+            `;
+
+            document.getElementById("profileResult").innerHTML = profile;
+        }
+    </script>
+
+</body>
+</html>
