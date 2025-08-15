@@ -1,0 +1,34 @@
+body{
+    background-color: #D5E1EF;
+    margin: 20px;
+    box-sizing: border-box;
+}
+
+.qr-box img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.qr-box{
+    font-family: sans-serif;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 280px;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    box-shadow: 7px 5px 20px 4px rgba(209, 212, 218, 0.466);
+}
+
+.qr-box p{
+    color: #A3A6AB;
+    font-size: 15px;
+    text-align: center;
+}
+
+.qr-box h3{
+    text-align: center;
+}
