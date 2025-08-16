@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Strength Checker</title>
+  <style>
+    body { font-family: Arial; background: #ecfccb; display: flex; justify-content: center; align-items: center; height: 100vh; margin:0; }
+    .box { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); width: 350px; text-align: center; }
+    input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; }
+    .strength { margin-top: 15px; padding: 10px; border-radius: 8px; }
+    .weak { background: #fecaca; color: #991b1b; }
+    .medium { background: #fde68a; color: #92400e; }
+    .strong { background: #bbf7d0; color: #166534; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>🔒 Password Strength Checker</h2>
+    <input type="password" id="password" placeholder="Enter password" onkeyup="checkStrength()">
+    <div id="strengthBox" class="strength"></div>
+  </div>
+
+  <script>
+    function checkStrength() {
+      let pwd = document.getElementById("password").value;
+      let strengthBox = document.getElementById("strengthBox");
+
+      let hasUpper = /[A-Z]/.test(pwd);
+      let hasNumber = /\d/.test(pwd);
+      let hasSymbol = /[!@#$%^&*]/.test(pwd);
+      let lengthCheck = pwd.length >= 8;
+
+      let strength = "Weak 😢", className = "weak";
+      if (lengthCheck && hasUpper && hasNumber && hasSymbol) {
+        strength = "Strong 💪"; className = "strong";
+      } else if (pwd.length >= 6 && (hasUpper || hasNumber)) {
+        strength = "Medium 🙂"; className = "medium";
+      }
+
+      strengthBox.innerText = `Password Strength: ${strength}`;
+      strengthBox.className = `strength ${className}`;
+    }
+  </script>
+</body>
+</html>
