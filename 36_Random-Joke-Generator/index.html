@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joke Generator</title>
+  <style>
+    body { font-family: Arial; background: #fce7f3; display: flex; justify-content: center; align-items: center; height: 100vh; }
+    .box { background: white; padding: 20px; border-radius: 15px; text-align: center; width: 350px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+    button { margin-top: 15px; padding: 10px 20px; border: none; background: #db2777; color: white; border-radius: 8px; cursor: pointer; }
+    button:hover { background: #9d174d; }
+    .joke { margin-top: 20px; font-style: italic; color: #4b5563; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>😂 Random Joke Generator</h2>
+    <button onclick="generateJoke()">Tell me a joke</button>
+    <div class="joke" id="jokeText"></div>
+  </div>
+
+  <script>
+    const jokes = [
+      "Why did the computer go to the doctor? Because it caught a virus! 💻🤒",
+      "I told my laptop it was getting too hot… now it won’t stop giving me the cold shoulder! 🧊",
+      "Why do Java developers wear glasses? Because they don’t see sharp! 👓",
+      "Math teacher: 'Why are you late?' Student: 'I was counting the steps to success!' 📚"
+    ];
+
+    function generateJoke() {
+      let randomIndex = Math.floor(Math.random() * jokes.length);
+      document.getElementById("jokeText").innerText = jokes[randomIndex];
+    }
+  </script>
+</body>
+</html>
