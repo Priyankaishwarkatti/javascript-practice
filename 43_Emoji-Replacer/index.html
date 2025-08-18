@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Emoji Replacer</title>
+</head>
+<body>
+  <h2>Emoji Replacer 😀</h2>
+  <input id="textInput" placeholder="Type something">
+  <button onclick="replaceEmoji()">Replace</button>
+  <p id="result"></p>
+
+  <script>
+    function replaceEmoji() {
+      let text = document.getElementById("textInput").value;
+      text = text.replaceAll("pizza", "🍕");
+      text = text.replaceAll("cat", "🐱");
+      text = text.replaceAll("love", "❤️");
+
+      document.getElementById("result").innerText = text;
+    }
+  </script>
+</body>
+</html>
