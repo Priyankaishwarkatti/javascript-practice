@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stopwatch</title>
+</head>
+<body>
+  <h2>⏱ Stopwatch</h2>
+  <p id="display">00:00</p>
+  <button onclick="start()">Start</button>
+  <button onclick="stop()">Stop</button>
+  <button onclick="reset()">Reset</button>
+
+  <script>
+    let seconds = 0;
+    let timer;
+
+    function updateDisplay() {
+      let min = String(Math.floor(seconds / 60)).padStart(2, '0');
+      let sec = String(seconds % 60).padStart(2, '0');
+      document.getElementById("display").innerText = `${min}:${sec}`;
+    }
+
+    function start() {
+      if (!timer) {
+        timer = setInterval(() => {
+          seconds++;
+          updateDisplay();
+        }, 1000);
+      }
+    }
+
+    function stop() {
+      clearInterval(timer);
+      timer = null;
+    }
+
+    function reset() {
+      stop();
+      seconds = 0;
+      updateDisplay();
+    }
+  </script>
+</body>
+</html>
