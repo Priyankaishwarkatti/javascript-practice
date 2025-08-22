@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guess the Word</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: linear-gradient(135deg, #f7971e, #ffd200);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      background: white;
+      color: #f7971e;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔤 Guess the Word</h2>
+  <p id="scrambledWord"></p>
+  <input type="text" id="guess" placeholder="Your Guess">
+  <button onclick="checkGuess()">Check</button>
+  <p id="result"></p>
+
+  <script>
+    const words = ["apple", "banana", "grapes", "orange", "mango"];
+    let word = words[Math.floor(Math.random() * words.length)];
+    let scrambled = word.split("").sort(() => Math.random() - 0.5).join("");
+    document.getElementById("scrambledWord").innerText = `Guess this word: ${scrambled}`;
+
+    function checkGuess() {
+      let guess = document.getElementById("guess").value;
+      let result = document.getElementById("result");
+
+      if (guess.toLowerCase() === word.toLowerCase()) {
+        result.innerText = "🎉 Correct! The word is " + word;
+      } else {
+        result.innerText = "❌ Try Again!";
+      }
+    }
+  </script>
+</body>
+</html>
