@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dice Roller</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: linear-gradient(135deg, #ff512f, #dd2476);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      background: white;
+      color: #dd2476;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>🎲 Dice Roller</h2>
+  <button onclick="rollDice()">Roll</button>
+  <p id="result"></p>
+
+  <script>
+    function rollDice() {
+      let dice1 = Math.floor(Math.random() * 6) + 1;
+      let dice2 = Math.floor(Math.random() * 6) + 1;
+      document.getElementById("result").innerText = 
+        `Dice 1: ${dice1}, Dice 2: ${dice2} → Total: ${dice1 + dice2}`;
+    }
+  </script>
+</body>
+</html>
