@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tip Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    input, button, select {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      background: white;
+      color: #185a9d;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>💰 Tip Calculator</h2>
+  <input type="number" id="bill" placeholder="Enter Bill Amount">
+  <select id="tip">
+    <option value="0.05">5%</option>
+    <option value="0.1">10%</option>
+    <option value="0.15">15%</option>
+    <option value="0.2">20%</option>
+  </select>
+  <button onclick="calculateTip()">Calculate</button>
+  <p id="result"></p>
+
+  <script>
+    function calculateTip() {
+      let bill = parseFloat(document.getElementById("bill").value);
+      let tipPercent = parseFloat(document.getElementById("tip").value);
+      let tip = bill * tipPercent;
+      let total = bill + tip;
+
+      document.getElementById("result").innerText = 
+        `Tip: ₹${tip.toFixed(2)} | Total: ₹${total.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
