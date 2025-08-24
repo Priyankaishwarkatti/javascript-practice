@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #56ccf2, #2f80ed);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      background: white;
+      color: #2f80ed;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>☀️ Weather App</h2>
+  <input type="text" id="city" placeholder="Enter City">
+  <button onclick="getWeather()">Get Weather</button>
+  <p id="result"></p>
+
+  <script>
+    function getWeather() {
+      let city = document.getElementById("city").value;
+      let weatherData = {
+        "Delhi": "☀️ 35°C Hot",
+        "Mumbai": "🌧️ 29°C Rainy",
+        "Bangalore": "⛅ 26°C Cloudy",
+        "Chennai": "☀️ 34°C Sunny"
+      };
+
+      document.getElementById("result").innerText = 
+        weatherData[city] || "❌ City not found!";
+    }
+  </script>
+</body>
+</html>
