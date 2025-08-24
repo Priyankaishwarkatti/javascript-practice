@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #8e2de2, #4a00e0);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      background: white;
+      color: #4a00e0;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>🎯 Quiz App</h2>
+  <p id="question"></p>
+  <div id="options"></div>
+  <p id="result"></p>
+
+  <script>
+    const quizData = [
+      { q: "What is the capital of India?", options: ["Delhi", "Mumbai", "Kolkata"], answer: "Delhi" },
+      { q: "Which is the largest planet?", options: ["Mars", "Jupiter", "Earth"], answer: "Jupiter" },
+      { q: "Who wrote Ramayana?", options: ["Valmiki", "Tulsidas", "Vyas"], answer: "Valmiki" }
+    ];
+
+    let index = 0;
+    loadQuiz();
+
+    function loadQuiz() {
+      if (index >= quizData.length) {
+        document.getElementById("question").innerText = "🎉 Quiz Completed!";
+        document.getElementById("options").innerHTML = "";
+        return;
+      }
+      let q = quizData[index];
+      document.getElementById("question").innerText = q.q;
+      document.getElementById("options").innerHTML = q.options.map(opt => 
+        `<button onclick="checkAnswer('${opt}')">${opt}</button>`).join("");
+    }
+
+    function checkAnswer(ans) {
+      if (ans === quizData[index].answer) {
+        document.getElementById("result").innerText = "✅ Correct!";
+      } else {
+        document.getElementById("result").innerText = "❌ Wrong!";
+      }
+      index++;
+      setTimeout(() => {
+        document.getElementById("result").innerText = "";
+        loadQuiz();
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
