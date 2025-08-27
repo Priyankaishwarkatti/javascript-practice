@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      text-align: center;
+      padding: 20px;
+    }
+    .quiz-box {
+      background: white;
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover { background: #45a049; }
+  </style>
+</head>
+<body>
+  <div class="quiz-box">
+    <h2>Mini Quiz</h2>
+    <form id="quizForm">
+      <div>
+        <p>1. What is 2 + 2?</p>
+        <input type="radio" name="q1" value="3"> 3<br>
+        <input type="radio" name="q1" value="4"> 4<br>
+        <input type="radio" name="q1" value="5"> 5
+      </div>
+      <div>
+        <p>2. Which is a JavaScript framework?</p>
+        <input type="radio" name="q2" value="React"> React<br>
+        <input type="radio" name="q2" value="Photoshop"> Photoshop<br>
+        <input type="radio" name="q2" value="MS Word"> MS Word
+      </div>
+      <div>
+        <p>3. What keyword declares a variable in JS?</p>
+        <input type="radio" name="q3" value="var"> var<br>
+        <input type="radio" name="q3" value="int"> int<br>
+        <input type="radio" name="q3" value="string"> string
+      </div>
+      <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+    <h3 id="result"></h3>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      let score = 0;
+      const answers = { q1: "4", q2: "React", q3: "var" };
+      const form = document.forms["quizForm"];
+
+      for (let key in answers) {
+        if (form[key].value === answers[key]) {
+          score++;
+        }
+      }
+      document.getElementById("result").innerText =
+        "Your Score: " + score + "/3";
+    }
+  </script>
+</body>
+</html>
