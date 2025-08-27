@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Banking App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff8e1;
+      text-align: center;
+      padding: 30px;
+    }
+    .bank-box {
+      background: white;
+      display: inline-block;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
+    }
+    input {
+      margin: 10px;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 8px 15px;
+      border: none;
+      background: #ff9800;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover { background: #fb8c00; }
+    h2 { margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <div class="bank-box">
+    <h1>🏦 Mini Banking App</h1>
+    <h2>Balance: ₹ <span id="balance">1000</span></h2>
+    
+    <input type="number" id="amount" placeholder="Enter amount" />
+    <br>
+    <button onclick="deposit()">Deposit</button>
+    <button onclick="withdraw()">Withdraw</button>
+  </div>
+
+  <script>
+    let balance = 1000;
+
+    function deposit() {
+      const amount = Number(document.getElementById("amount").value);
+      if (amount > 0) {
+        balance += amount;
+        updateBalance();
+      } else {
+        alert("Enter a valid amount!");
+      }
+    }
+
+    function withdraw() {
+      const amount = Number(document.getElementById("amount").value);
+      if (amount > 0 && amount <= balance) {
+        balance -= amount;
+        updateBalance();
+      } else {
+        alert("Invalid amount or insufficient balance!");
+      }
+    }
+
+    function updateBalance() {
+      document.getElementById("balance").innerText = balance;
+      document.getElementById("amount").value = "";
+    }
+  </script>
+</body>
+</html>
