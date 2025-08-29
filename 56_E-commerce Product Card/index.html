@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Product Card</title>
+<style>
+  body { display:flex; justify-content:center; align-items:center; height:100vh; background:#f0f0f0; }
+  .card { width:250px; background:#fff; border-radius:15px; padding:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:center; }
+  .card img { width:100%; border-radius:10px; }
+  .btn { background:#ff5722; color:white; padding:10px; border:none; border-radius:10px; cursor:pointer; margin-top:10px; transition:0.3s; }
+  .btn:hover { background:#e64a19; }
+  #cartCount { font-weight:bold; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img src="https://via.placeholder.com/250" alt="Product">
+    <h3>Cool Sneakers</h3>
+    <p>$49.99</p>
+    <button class="btn" onclick="addToCart()">Add to Cart</button>
+    <p>🛒 Cart: <span id="cartCount">0</span></p>
+  </div>
+<script>
+  let cart = 0;
+  function addToCart() {
+    cart++;
+    document.getElementById("cartCount").innerText = cart;
+  }
+</script>
+</body>
+</html>
