@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading Example</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #0d1b2a;
+      color: white;
+      font-family: Arial, sans-serif;
+      font-size: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <p id="message">Loading</p>
+
+  <script>
+    let msg = document.querySelector("#message");
+    let dots = 0;
+
+    // animate loading dots every 500ms
+    let loading = setInterval(() => {
+      dots = (dots + 1) % 4; // cycle 0-3
+      msg.innerHTML = "Loading" + ".".repeat(dots);
+    }, 500);
+
+    // after 3 seconds stop animation and show Welcome
+    setTimeout(() => {
+      clearInterval(loading);
+      msg.innerHTML = "🎉 Welcome!!! 🎉";
+    }, 3000);
+  </script>
+</body>
+</html>
