@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Timer</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #0a192f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .inputs {
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 60px;
+      padding: 5px;
+      margin: 0 5px;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 8px 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background: #64ffda;
+      color: #0a192f;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #52e0c4;
+    }
+
+    .timer-display {
+      margin-top: 20px;
+      font-size: 32px;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Countdown Timer</h1>
+
+  <div class="inputs">
+    <input type="number" id="hours" placeholder="HH" min="0">
+    <input type="number" id="minutes" placeholder="MM" min="0" max="59">
+    <input type="number" id="seconds" placeholder="SS" min="0" max="59">
+  </div>
+
+  <button onclick="startTimer()">Start</button>
+
+  <div class="timer-display" id="timer">00:00:00</div>
+
+  <script>
+    let timerInterval;
+
+    function startTimer() {
+      clearInterval(timerInterval);
+
+      let hours = parseInt(document.getElementById("hours").value) || 0;
+      let minutes = parseInt(document.getElementById("minutes").value) || 0;
+      let seconds = parseInt(document.getElementById("seconds").value) || 0;
+
+      function updateDisplay() {
+        document.getElementById("timer").textContent =
+          hours.toString().padStart(2, "0") + ":" +
+          minutes.toString().padStart(2, "0") + ":" +
+          seconds.toString().padStart(2, "0");
+      }
+
+      updateDisplay();
+
+      timerInterval = setInterval(() => {
+        if (hours === 0 && minutes === 0 && seconds === 0) {
+          clearInterval(timerInterval);
+          document.getElementById("timer").textContent = "⏰ Time's up!";
+          return;
+        }
+
+        seconds--;
+
+        if (seconds < 0) {
+          seconds = 59;
+          minutes--;
+        }
+
+        if (minutes < 0) {
+          minutes = 59;
+          hours--;
+        }
+
+        updateDisplay();
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
