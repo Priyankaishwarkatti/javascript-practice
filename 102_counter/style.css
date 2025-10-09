@@ -1,0 +1,29 @@
+body{
+    text-align: center;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 5rem;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.inputNum {
+    margin-block: 40px;
+    font-size: 1.3rem;
+}
+
+.inputNum input {
+    max-width: 80px;
+    height: 30px;
+    font-size: 1rem;
+}
